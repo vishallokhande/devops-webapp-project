@@ -1,104 +1,19 @@
-# DevOps WebApp Project – Complete CI/CD on AWS (EKS, Jenkins, Terraform, Monitoring)
+📘 DevOps WebApp Project – CI/CD on AWS (Terraform, Jenkins, Docker, ECR, EKS, Monitoring)
 
-This README summarizes the complete project implemented using **AWS EKS, Jenkins CI/CD, Terraform, Docker, ECR**, and **Prometheus–Grafana monitoring**.
+<img width="1363" height="411" alt="0 1" src="https://github.com/user-attachments/assets/5924c080-0039-40ee-9517-f1358b088e90" />
 
----
+<img width="1364" height="571" alt="0 2" src="https://github.com/user-attachments/assets/f477ef6d-10e5-4a0d-819b-ae7afd928518" />
 
-## 📌 Architecture Overview
+<img width="1196" height="177" alt="0 3" src="https://github.com/user-attachments/assets/5c7417e6-a156-414c-82c7-4d89f7042991" />
 
-Below is the architecture followed in your actual deployment:
+<img width="1366" height="357" alt="0 4" src="https://github.com/user-attachments/assets/1c7cd6fb-8901-433a-a1e3-74052d4edbdb" />
 
-![IAM Screenshot](0.1.png)
-![EC2 Screenshot](0.2.png)
-![Monitoring Screenshot](0.3.png)
-![ECR Screenshot](0.4.png)
 
----
 
-## 🚀 Project Workflow
+🏗️ Architecture Diagram
+High-Level Architecture (Generated from your project)
+<img width="1379" height="779" alt="modernize-applications-with-microservices-using-amazon-eks" src="https://github.com/user-attachments/assets/a6288428-40ec-4d6b-8530-2dacae7afccb" />
+<img width="957" height="423" alt="Architecture2" src="https://github.com/user-attachments/assets/5a4ad4dc-05cd-4380-b796-b397b52df54c" />
 
-### 1️⃣ Developer Workflow
-- Developer pushes code → GitHub Repo  
-- Webhook triggers Jenkins → Jenkins pulls latest code  
 
-### 2️⃣ CI Pipeline – Jenkins
-Jenkins executes:
-1. Clone repository  
-2. Build Docker image  
-3. Tag image  
-4. Push to Amazon ECR  
-5. Update Kubernetes manifests  
-6. Deploy to AWS EKS cluster  
 
-### 3️⃣ CD Workflow – EKS Deployment
-- Kubernetes applies new deployment  
-- Rolling update is performed  
-- Application becomes available on LoadBalancer  
-
-### 4️⃣ Monitoring
-Using Helm charts:
-- Prometheus  
-- Grafana  
-- Node Exporter  
-- Kube State Metrics  
-
----
-
-## 🛠 Technologies Used
-
-| Component | Technology |
-|----------|------------|
-| Compute | AWS EC2 |
-| Container Orchestration | AWS EKS |
-| CI/CD | Jenkins |
-| IaC | Terraform |
-| Container Registry | Amazon ECR |
-| Monitoring | Prometheus + Grafana |
-| SCM | GitHub |
-
----
-
-## 📂 Project Structure
-
-```
-devops-webapp-project/
-│── app/
-│── infra/
-│── Jenkinsfile
-│── README.md
-```
-
----
-
-## 🔧 Jenkinsfile (High Level)
-
-```
-pipeline {
-    agent any
-    stages {
-        stage("Checkout") { steps { checkout scm } }
-        stage("Build Docker") { steps { sh 'docker build -t app .' } }
-        stage("Push to ECR") { steps { sh 'docker push ...' } }
-        stage("Deploy to EKS") { steps { sh 'kubectl apply -f deployment.yaml' } }
-    }
-}
-```
-
----
-
-## 🎯 Final Deliverables
-✔ Full AWS Infrastructure  
-✔ Jenkins CI/CD Pipeline  
-✔ Dockerized Application  
-✔ Live EKS Deployment  
-✔ Monitoring with Grafana  
-✔ Professional README  
-
----
-
-If you want:
-🔹 ZIP File  
-🔹 SVG/PNG Architecture Diagram  
-🔹 Full PPT deck  
-
-Just say “Generate ZIP” or “Generate Diagram” or “Generate PPT”.
