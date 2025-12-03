@@ -1,10 +1,14 @@
-# DevOps WebApp Project – CI/CD on AWS (ECR + EKS + Jenkins + Monitoring)
+DevOps WebApp Project – CI/CD on AWS (ECR + EKS + Jenkins + Monitoring)
+<img width="957" height="423" alt="Architecture2" src="https://github.com/user-attachments/assets/942caf63-749d-4204-bc12-f54270b0e9bd" />
 
-This README documents the complete end‑to‑end DevOps pipeline you built using AWS services such as **EKS, EC2, ECR**, Jenkins-based CI/CD, Dockerized Web Application Deployment, and Monitoring using **Prometheus & Grafana**.
+<img width="1379" height="779" alt="modernize-applications-with-microservices-using-amazon-eks" src="https://github.com/user-attachments/assets/6523869a-448e-439f-b33e-e212fce3520a" />
+
+
+This README documents the complete end‑to‑end DevOps pipeline you built using AWS services such as **EKS, EC2, ECR**, Jenkins-based CI/CD, Dockerized Web Application Deployment, and Monitoring using Prometheus & Grafana.
 
 ---
 
-## 🚀 Project Overview
+🚀 Project Overview
 
 This project demonstrates a complete real‑world DevOps workflow:
 
@@ -17,22 +21,19 @@ This project demonstrates a complete real‑world DevOps workflow:
 
 You also configured IAM, EC2, ECR, EKS, and Monitoring manually and validated everything.
 
----
 
-## 🏛️ Architecture Diagram (High Level)
+🏛️ Architecture Diagram (High Level)
 
-```
 Local Machine → GitHub → Jenkins (EC2)
       └──── Docker Build → Push to ECR
              └──── Deploy to EKS
                     └──── Service (LoadBalancer)
                            └──── Users Access App
 Prometheus ← Metrics ← EKS nodes → Grafana UI
-```
 
----
 
-## 🧰 Tech Stack
+
+🧰 Tech Stack
 
 | Component     | Technology Used |
 |--------------|------------------|
@@ -44,11 +45,9 @@ Prometheus ← Metrics ← EKS nodes → Grafana UI
 | Language/App  | Sample WebApp |
 | Authentication | AWS IAM (dev_proj_EKS user) |
 
----
+ 🔑 AWS Configuration
 
-## 🔑 AWS Configuration
-
-### 1️⃣ IAM Setup  
+1️⃣ IAM Setup  
 - Created user **dev_proj_EKS**
 - Attached policies:
   - `AmazonEKSClusterPolicy`
@@ -57,7 +56,7 @@ Prometheus ← Metrics ← EKS nodes → Grafana UI
   - `IAMUserChangePassword`
 - Generated ACCESS_KEY + SECRET_KEY for Jenkins authentication
 
-### 2️⃣ EC2 Instances Used  
+2️⃣ EC2 Instances Used  
 - **jenkins-ci** → Jenkins server  
 - **dev_proj_EKS** → EC2 used for configuration  
 - **devops-eks-standard-workers** → EKS worker nodes  
@@ -74,27 +73,24 @@ Prometheus ← Metrics ← EKS nodes → Grafana UI
 
 You successfully configured `kubectl` with:
 
-```
+
 aws eks update-kubeconfig --region ap-south-1 --name devops-eks
-```
 
----
 
-## 📦 Amazon ECR Repository
+
+📦 Amazon ECR Repository
 
 Example:
 
-```
+
 704444257628.dkr.ecr.ap-south-1.amazonaws.com/devops-sample-app
-```
 
 Images pushed automatically during the pipeline.
 
----
 
-## 📌 Jenkins Pipeline Workflow
+📌 Jenkins Pipeline Workflow
 
-### Stages:
+Stages:
 1. **Checkout Code**
 2. **Build Docker Image**
 3. **Authenticate to Amazon ECR**
@@ -102,11 +98,11 @@ Images pushed automatically during the pipeline.
 5. **Deploy to EKS**
 6. **Verify Deployment**
 
----
 
-## 📝 Jenkinsfile Used
 
-```groovy
+📝 Jenkinsfile Used
+
+  groovy
 pipeline {
     agent any
     environment {
@@ -149,13 +145,17 @@ pipeline {
 }
 ```
 
----
+<img width="1363" height="411" alt="0 1" src="https://github.com/user-attachments/assets/ec482b11-b915-4d54-a219-740ffc089613" />
+<img width="1364" height="571" alt="0 2" src="https://github.com/user-attachments/assets/b7ac02b6-266a-4a81-b3e2-3c83b3439eab" />
+<img width="1196" height="177" alt="0 3" src="https://github.com/user-attachments/assets/9b941e1b-f31f-4533-8d96-2012791e6062" />
+<img width="1366" height="357" alt="0 4" src="https://github.com/user-attachments/assets/3f575f9e-29d7-45f7-9be3-d2b3ba7d0af5" />
 
-## 📊 Monitoring (Prometheus & Grafana)
+
+
+📊 Monitoring (Prometheus & Grafana)
 
 You deployed monitoring stack in namespace:
 
-```
 kubectl get svc -n monitoring
 ```
 
@@ -173,7 +173,7 @@ Prometheus services running inside cluster:
 
 ---
 
-## 🟢 Final Deployment Validation
+🟢 Final Deployment Validation
 
 ```
 kubectl get pods
@@ -187,9 +187,9 @@ Grafana accessible using LB URL in namespace `monitoring`.
 
 ---
 
-## 📌 Summary
+📌 Summary
 
-You successfully built:
+successfully built:
 
 ✔ Full CI/CD pipeline  
 ✔ Automated build → push → deploy  
@@ -198,10 +198,3 @@ You successfully built:
 ✔ Monitoring + visualization stack  
 ✔ Production‑grade Jenkins pipeline  
 
-This project is **resume-ready** and **interview-ready**.
-
----
-
-## 📬 Need ZIP file, SVG diagram, or PDF version?
-
-Just ask — I can generate those instantly.
