@@ -123,7 +123,7 @@ pipeline {
         stage('Authenticate ECR') {
             steps {
                 sh '''
-                    aws ecr get-login-password --region $AWS_REGION |                     docker login --username AWS --password-stdin $ECR_REGISTRY
+                    aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $ECR_REGISTRY
                     docker tag $ECR_REPO:$IMAGE_TAG $ECR_REGISTRY/$ECR_REPO:$IMAGE_TAG
                 '''
             }
